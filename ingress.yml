@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress for apache and github application
+spec:
+  rules:
+  - host: yamixyz.com
+    http:
+      paths:
+      - path: /apache
+        pathType: Prefix
+        backend:
+          service:
+            name: apache-service
+            port:
+              number: 80
+      - path: /custom
+        pathType: Prefix
+        backend:
+          service:
+            name: custom-service
+            port:
+              number: 80
+
